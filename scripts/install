@@ -87,7 +87,9 @@ ynh_script_progression --message="Setting up source files..."
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
 git clone $source $final_path
-git checkout $COMMIT
+pushd "$final_path"
+	git checkout $COMMIT
+popd
 
 #=================================================
 # NGINX CONFIGURATION
