@@ -88,8 +88,10 @@ then
 	ynh_script_progression --message="Upgrading source files..."
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	git pull
-	git checkout $COMMIT
+	pushd "$final_path"
+		git pull
+		git checkout $COMMIT
+	popd
 fi
 
 #=================================================
