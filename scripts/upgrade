@@ -89,8 +89,9 @@ then
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	pushd "$final_path"
-		git pull
-		git checkout $COMMIT
+		git checkout master
+		git pull --quiet
+		git checkout $COMMIT --quiet
 	popd
 fi
 
