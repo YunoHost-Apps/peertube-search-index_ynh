@@ -1,0 +1,6 @@
+SOURCE_URL=https://framagit.org/framasoft/peertube/search-index/-/archive/217666c70766aa9a81ce6dde9e6c41a43d2da991/search-index-217666c70766aa9a81ce6dde9e6c41a43d2da991.tar.gz
+SOURCE_SUM=c6e5e5a66a2d09c69568328f67c03c5cda864bf51da2cb0f6c8878fdb242081f
+SOURCE_SUM_PRG=sha256sum
+SOURCE_FORMAT=tar.gz
+SOURCE_IN_SUBDIR=true
+SOURCE_FILENAME=

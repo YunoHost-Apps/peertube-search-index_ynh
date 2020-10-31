@@ -1,0 +1,54 @@
+{
+    "name": "PeerTube search-index",
+    "id": "peertube-search-index",
+    "packaging_format": 1,
+    "description": {
+        "en": "A search engine for PeerTube videos and channels",
+        "fr": "Un moteur de recherche de vidéos et chaînes PeerTube"
+    },
+    "version": "0.0.1-2020-10-31~ynh1",
+    "url": "https://search.joinpeertube.org/",
+    "license": "AGPL-3.0-only",
+    "maintainer": {
+        "name": "yalh"
+    },
+    "requirements": {
+        "yunohost": ">= 4.0"
+    },
+    "multi_instance": true,
+    "services": [
+        "nginx"
+    ],
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "type": "domain",
+                "ask": {
+                    "en": "Choose a domain name for PeerTube search-index",
+                    "fr": "Choisissez un nom de domaine pour PeerTube search-index"
+                },
+                "example": "example.com"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "ask": {
+                    "en": "Choose a path for PeerTube search-index",
+                    "fr": "Choisissez un chemin pour PeerTube search-index"
+                },
+                "example": "/search",
+                "default": "/search"
+            },
+            {
+                "name": "is_public",
+                "type": "boolean",
+                "ask": {
+                    "en": "Is it a public application?",
+                    "fr": "Est-ce une application publique ?"
+                },
+                "default": true
+            }
+        ]
+    }
+}

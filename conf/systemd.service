@@ -1,0 +1,19 @@
+[Unit]
+Description=__APP__ search index daemon
+After=network.target
+
+[Service]
+Type=simple
+Environment=NODE_ENV=production
+Environment=NODE_CONFIG_DIR=__FINALPATH__/config
+User=__APP__
+Group=__APP__
+ExecStart=__YNH_NPM__ start
+WorkingDirectory=__FINALPATH__/
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=__APP__
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
