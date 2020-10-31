@@ -31,16 +31,6 @@
                 "example": "example.com"
             },
             {
-                "name": "path",
-                "type": "path",
-                "ask": {
-                    "en": "Choose a path for PeerTube search-index",
-                    "fr": "Choisissez un chemin pour PeerTube search-index"
-                },
-                "example": "/search",
-                "default": "/search"
-            },
-            {
                 "name": "is_public",
                 "type": "boolean",
                 "ask": {

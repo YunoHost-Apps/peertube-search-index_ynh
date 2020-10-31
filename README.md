@@ -11,6 +11,10 @@ A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, d
 
 **Shipped version:** 0.0.1-2020-10-31
 
+## Important points to read before installing
+
+1. **PeerTube search-index** require a dedicated **root domain**, eg. search.domain.tld
+
 ## Screenshots
 
 ![](sepia-search-screenshot.png)
