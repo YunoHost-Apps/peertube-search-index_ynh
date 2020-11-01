@@ -110,7 +110,8 @@ ynh_script_progression --message="Upgrading dependencies..."
 
 ynh_install_app_dependencies $pkg_dependencies
 ynh_install_extra_app_dependencies --repo="deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main" --package="$extra_pkg_dependencies" --key="https://artifacts.elastic.co/GPG-KEY-elasticsearch"
-ynh_systemd_action --service_name=elasticsearch --action="start"
+systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
 ynh_install_nodejs --nodejs_version=$NODEJS_VERSION
 ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
 
@@ -133,7 +134,6 @@ pushd "$final_path"
 	git submodule update --init --recursive
 	ynh_use_nodejs
 	yarn install --pure-lockfile
-	mkdir "$final_path/dist"
 	$ynh_npm run build
 popd
 
@@ -150,9 +150,8 @@ ynh_add_systemd_config --others_var="ynh_npm"
 #=================================================
 ynh_script_progression --message="Modifying a config file..."
 
+config="$final_path/config/production.yaml"
 ynh_backup_if_checksum_is_different --file="$config"
-
-ynh_replace_string --match_string="match_string" --replace_string="replace_string" --target_file="$config"
 
 # Recalculate and store the checksum of the file for the next upgrade.
 ynh_store_file_checksum --file="$config"
