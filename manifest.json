@@ -10,7 +10,7 @@
     "url": "https://search.joinpeertube.org/",
     "license": "AGPL-3.0-only",
     "maintainer": {
-        "name": "yalh"
+        "name": "yalh76"
     },
     "requirements": {
         "yunohost": ">= 4.0"
