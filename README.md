@@ -9,7 +9,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 ## Overview
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
-**Shipped version:** 0.0.1-2020-10-31
+**Shipped version:** 0.0.1-2020-12-24
 
 ## Important points to read before installing
 
