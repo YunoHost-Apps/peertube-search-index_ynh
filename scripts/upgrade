@@ -64,13 +64,6 @@ ynh_clean_setup () {
 ynh_abort_if_errors
 
 #=================================================
-# CHECK THE PATH
-#=================================================
-
-# Normalize the URL path syntax
-path_url=$(ynh_normalize_url_path --path_url=$path_url)
-
-#=================================================
 # STANDARD UPGRADE STEPS
 #=================================================
 # STOP SYSTEMD SERVICE
@@ -110,7 +103,7 @@ ynh_script_progression --message="Upgrading dependencies..."
 
 ynh_install_app_dependencies $pkg_dependencies
 ynh_install_extra_app_dependencies --repo="deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main" --package="$extra_pkg_dependencies" --key="https://artifacts.elastic.co/GPG-KEY-elasticsearch"
-systemctl enable elasticsearch.service
+systemctl enable elasticsearch.service --quiet
 systemctl start elasticsearch.service
 ynh_install_nodejs --nodejs_version=$NODEJS_VERSION
 ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
@@ -179,7 +172,7 @@ ynh_use_logrotate --non-append
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..."
 
-yunohost service add $app --description "$app search index daemon" --log_type systemd
+yunohost service add $app --description "$app search index daemon"
 
 #=================================================
 # START SYSTEMD SERVICE
