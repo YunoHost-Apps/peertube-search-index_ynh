@@ -1,7 +1,7 @@
 # PeerTube search-index for YunoHost
 
 [![Integration level](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)  
-[![Install PeerTube search-index with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=peertube-search-index)
+[![Install PeerTube search-index with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
 > *This package allows you to install PeerTube search-index quickly and simply on a YunoHost server.  
 If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/install) to learn how to install it.*
@@ -47,8 +47,7 @@ To configure this app: modify the file /var/www/peertube-search-index/config/pro
 
 ---
 
-Developer info
-----------------
+## Developer info
 
 Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/peertube-search-index_ynh/tree/testing).
 
