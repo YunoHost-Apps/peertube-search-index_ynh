@@ -163,7 +163,7 @@ ynh_use_logrotate --non-append
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..."
 
-yunohost service add $app --description "$app search index daemon"
+yunohost service add $app --description="$app search index daemon"
 
 #=================================================
 # START SYSTEMD SERVICE
