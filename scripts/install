@@ -47,14 +47,13 @@ ynh_script_progression --message="Storing installation settings..."
 
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
-ynh_app_setting_set --app=$app --key=is_public --value=$is_public
 
 #=================================================
 # STANDARD MODIFICATIONS
 #=================================================
 # FIND AND OPEN A PORT
 #=================================================
-ynh_script_progression --message="Configuring firewall..."
+ynh_script_progression --message="Finding an available port..."
 
 # Find an available port
 port=$(ynh_find_port --port=8095)
@@ -63,9 +62,6 @@ ynh_app_setting_set --app=$app --key=port --value=$port
 # Optional: Expose this port publicly
 # (N.B. : you only need to do this if the app actually needs to expose the port publicly.
 # If you do this and the app doesn't actually need you are CREATING SECURITY HOLES IN THE SERVER !)
-
-# Open the port
-# ynh_exec_warn_less yunohost firewall allow --no-upnp TCP $port
 
 #=================================================
 # INSTALL DEPENDENCIES
@@ -170,7 +166,7 @@ ynh_use_logrotate
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..."
 
-yunohost service add $app --description "$app search index daemon"
+yunohost service add $app --description="$app search index daemon"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -183,13 +179,14 @@ ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --l
 #=================================================
 # SETUP SSOWAT
 #=================================================
-ynh_script_progression --message="Configuring SSOwat..."
+ynh_script_progression --message="Configuring permissions..."
 
 # Make app public if necessary
 if [ $is_public -eq 1 ]
 then
-	# unprotected_uris allows SSO credentials to be passed anyway.
-	ynh_app_setting_set --app=$app --key=unprotected_uris --value="/"
+	# Everyone can access the app.
+	# The "main" permission is automatically created before the install script.
+	ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================

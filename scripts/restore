@@ -89,13 +89,6 @@ ynh_install_nodejs --nodejs_version=$NODEJS_VERSION
 ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
 
 #=================================================
-# RESTORE THE LOGROTATE CONFIGURATION
-#=================================================
-ynh_script_progression --message="Restoring the logrotate configuration..."
-
-ynh_restore_file --origin_path="/etc/logrotate.d/$app"
-
-#=================================================
 # RESTORE SYSTEMD
 #=================================================
 ynh_script_progression --message="Restoring the systemd configuration..."
@@ -108,7 +101,7 @@ systemctl enable $app.service --quiet
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..."
 
-yunohost service add $app --description "$app search index daemon"
+yunohost service add $app --description="$app search index daemon"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -118,11 +111,18 @@ ynh_script_progression --message="Starting a systemd service..."
 ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --line_match="Server listening on port"
 
 #=================================================
+# RESTORE THE LOGROTATE CONFIGURATION
+#=================================================
+ynh_script_progression --message="Restoring the logrotate configuration..."
+
+ynh_restore_file --origin_path="/etc/logrotate.d/$app"
+
+#=================================================
 # GENERIC FINALIZATION
 #=================================================
 # RELOAD NGINX
 #=================================================
-ynh_script_progression --message="Reloading nginx web server..."
+ynh_script_progression --message="Reloading NGINX web server..."
 
 ynh_systemd_action --service_name=nginx --action=reload
 

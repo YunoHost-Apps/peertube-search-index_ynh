@@ -6,14 +6,14 @@
         "en": "A search engine for PeerTube videos and channels",
         "fr": "Un moteur de recherche de vidéos et chaînes PeerTube"
     },
-    "version": "0.0.1-2020-12-24~ynh1",
+    "version": "0.0.1-2021-02-17~ynh1",
     "url": "https://search.joinpeertube.org/",
     "license": "AGPL-3.0-only",
     "maintainer": {
         "name": "yalh76"
     },
     "requirements": {
-        "yunohost": ">= 4.0"
+        "yunohost": ">= 4.1.3"
     },
     "multi_instance": true,
     "services": [
