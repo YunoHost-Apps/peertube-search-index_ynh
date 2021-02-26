@@ -131,17 +131,7 @@ ynh_add_systemd_config --others_var="ynh_npm"
 #=================================================
 ynh_script_progression --message="Modifying a config file..."
 
-config="$final_path/config/production.yaml"
-cp -f ../conf/default.yaml "$config"
-ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="$config"
-
-#=================================================
-# STORE THE CONFIG FILE CHECKSUM
-#=================================================
-ynh_script_progression --message="Storing the config file checksum..."
-
-# Calculate and store the config file checksum into the app settings
-ynh_store_file_checksum --file="$config"
+ynh_add_config --template="../conf/default.yaml" --destination="$final_path/config/production.yaml"
 
 #=================================================
 # GENERIC FINALIZATION
