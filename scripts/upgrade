@@ -87,7 +87,7 @@ then
 	popd
 fi
 
-chmod 750 "$final_path"
+chmod -R 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:$app "$final_path"
 
