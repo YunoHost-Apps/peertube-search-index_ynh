@@ -6,7 +6,7 @@
         "en": "A search engine for PeerTube videos and channels",
         "fr": "Un moteur de recherche de vidéos et chaînes PeerTube"
     },
-    "version": "0.0.1-2021-02-17~ynh1",
+    "version": "0.0.1-2021-02-17~ynh2",
     "url": "https://search.joinpeertube.org/",
     "license": "AGPL-3.0-only",
     "maintainer": {
@@ -24,19 +24,11 @@
             {
                 "name": "domain",
                 "type": "domain",
-                "ask": {
-                    "en": "Choose a domain name for PeerTube search-index",
-                    "fr": "Choisissez un nom de domaine pour PeerTube search-index"
-                },
                 "example": "example.com"
             },
             {
                 "name": "is_public",
                 "type": "boolean",
-                "ask": {
-                    "en": "Is it a public application?",
-                    "fr": "Est-ce une application publique ?"
-                },
                 "default": true
             }
         ]

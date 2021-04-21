@@ -35,8 +35,8 @@ To configure this app: modify the file /var/www/peertube-search-index/config/pro
 
 #### Supported architectures
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/peertube-search-index%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/peertube-search-index%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/peertube-search-index/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/peertube-search-index.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/peertube-search-index.svg)](https://ci-apps-arm.yunohost.org/ci/apps/peertube-search-index/)
 
 ## Links
 
