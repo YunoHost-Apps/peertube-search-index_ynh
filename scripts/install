@@ -138,7 +138,7 @@ chown $app:$app "$final_path/config/production.yaml"
 ynh_script_progression --message="Configuring a systemd service..."
 
 # Create a dedicated systemd config
-ynh_add_systemd_config --others_var="ynh_npm"
+ynh_add_systemd_config
 
 #=================================================
 # GENERIC FINALIZATION
