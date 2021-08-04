@@ -11,11 +11,11 @@
 		setup_public=1
 		upgrade=1
 		# 0.0.1-2020-10-31~ynh1
-		upgrade=1	from_commit=b0541627859d2b702b55f7ac33e7f786e70b3051
+		# upgrade=1	from_commit=b0541627859d2b702b55f7ac33e7f786e70b3051
 		# 0.0.1-2020-12-24~ynh1
-		upgrade=1	from_commit=103b86aa716d289cab00aee49e539cab252e21a3
+		# upgrade=1	from_commit=103b86aa716d289cab00aee49e539cab252e21a3
 		# 0.0.1-2021-02-17~ynh1
-		upgrade=1	from_commit=e9864a6c794ba3ec5e6359b298d299f513a157e7
+		# upgrade=1	from_commit=e9864a6c794ba3ec5e6359b298d299f513a157e7
 		backup_restore=1
 		multi_instance=1
 		port_already_use=0
