@@ -26,7 +26,7 @@ A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, d
 
 ## Important points to read before installing
 
-1. **PeerTube search-index** require a dedicated **root domain**, eg. search.domain.tld
+1. **PeerTube search-index** requires a dedicated **root domain**, e.g. search.domain.tld
 
 ## Configuration
 
