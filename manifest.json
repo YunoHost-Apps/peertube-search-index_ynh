@@ -6,7 +6,7 @@
         "en": "Search engine for PeerTube videos and channels",
         "fr": "Moteur de recherche de vidéos et chaînes PeerTube"
     },
-    "version": "2021.02.17~ynh3",
+    "version": "2021.12.28~ynh1",
     "url": "https://search.joinpeertube.org/",
     "upstream": {
         "license": "AGPL-3.0-only",
