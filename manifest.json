@@ -3,17 +3,24 @@
     "id": "peertube-search-index",
     "packaging_format": 1,
     "description": {
-        "en": "A search engine for PeerTube videos and channels",
-        "fr": "Un moteur de recherche de vidéos et chaînes PeerTube"
+        "en": "Search engine for PeerTube videos and channels",
+        "fr": "Moteur de recherche de vidéos et chaînes PeerTube"
     },
-    "version": "0.0.1-2021-02-17~ynh2",
+    "version": "0.0.1.2021.12.28~ynh1",
     "url": "https://search.joinpeertube.org/",
+    "upstream": {
+        "license": "AGPL-3.0-only",
+        "website": "https://search.joinpeertube.org/",
+        "demo": "https://search.joinpeertube.org/",
+        "admindoc": "https://framagit.org/framasoft/peertube/search-index",
+        "code": "https://framagit.org/framasoft/peertube/search-index"
+    },
     "license": "AGPL-3.0-only",
     "maintainer": {
         "name": "yalh76"
     },
     "requirements": {
-        "yunohost": ">= 4.2.0"
+        "yunohost": ">= 4.3.0"
     },
     "multi_instance": true,
     "services": [
@@ -23,8 +30,7 @@
         "install" : [
             {
                 "name": "domain",
-                "type": "domain",
-                "example": "example.com"
+                "type": "domain"
             },
             {
                 "name": "is_public",
