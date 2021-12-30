@@ -59,10 +59,6 @@ ynh_script_progression --message="Finding an available port..."
 port=$(ynh_find_port --port=8095)
 ynh_app_setting_set --app=$app --key=port --value=$port
 
-# Optional: Expose this port publicly
-# (N.B.: you only need to do this if the app actually needs to expose the port publicly.
-# If you do this and the app doesn't actually need you are CREATING SECURITY HOLES IN THE SERVER !)
-
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
@@ -105,7 +101,7 @@ chown -R $app:$app "$final_path"
 ynh_script_progression --message="Configuring NGINX web server..."
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config "port"
+ynh_add_nginx_config
 
 #=================================================
 # SPECIFIC SETUP

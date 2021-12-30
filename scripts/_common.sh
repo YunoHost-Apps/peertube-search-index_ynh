@@ -13,7 +13,7 @@ NODEJS_VERSION=12
 
 REPOSITORY="https://framagit.org/framasoft/peertube/search-index"
 
-COMMIT="c29e7f02df4bd5cdfac3696de6d221f1beea041f"
+COMMIT="5c8dc80186971f6f0b837ea484dde668ca437bd7"
 
 #=================================================
 # PERSONAL HELPERS
