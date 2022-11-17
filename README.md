@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # PeerTube search-index for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![Working status](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)  
 [![Install PeerTube search-index with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -18,13 +18,13 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**Shipped version:** 0.0.1.2021.12.28~ynh2
+**Shipped version:** 0.0.1.2022.06.03~ynh1
 
 **Demo:** https://search.joinpeertube.org/
 
 ## Screenshots
 
-![](./doc/screenshots/sepia-search-screenshot.png)
+![Screenshot of PeerTube search-index](./doc/screenshots/sepia-search-screenshot.png)
 
 ## Disclaimers / important information
 
@@ -38,21 +38,22 @@ To configure this app: modify the file `/var/www/peertube-search-index/config/pr
 
 ## Documentation and resources
 
-* Official app website: https://search.joinpeertube.org/
-* Official admin documentation: https://framagit.org/framasoft/peertube/search-index
-* Upstream app code repository: https://framagit.org/framasoft/peertube/search-index
-* YunoHost documentation for this app: https://yunohost.org/app_peertube-search-index
-* Report a bug: https://github.com/YunoHost-Apps/peertube-search-index_ynh/issues
+* Official app website: <https://search.joinpeertube.org/>
+* Official admin documentation: <https://framagit.org/framasoft/peertube/search-index>
+* Upstream app code repository: <https://framagit.org/framasoft/peertube/search-index>
+* YunoHost documentation for this app: <https://yunohost.org/app_peertube-search-index>
+* Report a bug: <https://github.com/YunoHost-Apps/peertube-search-index_ynh/issues>
 
 ## Developer info
 
 Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/peertube-search-index_ynh/tree/testing).
 
 To try the testing branch, please proceed like that.
-```
+
+``` bash
 sudo yunohost app install https://github.com/YunoHost-Apps/peertube-search-index_ynh/tree/testing --debug
 or
 sudo yunohost app upgrade peertube-search-index -u https://github.com/YunoHost-Apps/peertube-search-index_ynh/tree/testing --debug
 ```
 
-**More info regarding app packaging:** https://yunohost.org/packaging_apps
+**More info regarding app packaging:** <https://yunohost.org/packaging_apps>
