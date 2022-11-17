@@ -106,7 +106,7 @@ ynh_add_nginx_config
 #=================================================
 # SPECIFIC SETUP
 #=================================================
-# BUILDING 
+# BUILDING
 #=================================================
 ynh_script_progression --message="Building..."
 
