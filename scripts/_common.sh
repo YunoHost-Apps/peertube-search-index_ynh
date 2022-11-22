@@ -9,11 +9,11 @@ pkg_dependencies="git"
 
 extra_pkg_dependencies="elasticsearch-oss"
 
-NODEJS_VERSION=12
+NODEJS_VERSION=14
 
 REPOSITORY="https://framagit.org/framasoft/peertube/search-index"
 
-COMMIT="5c8dc80186971f6f0b837ea484dde668ca437bd7"
+COMMIT="316adda0db184cb36f0645a60dc8f6a1611ecd28"
 
 #=================================================
 # PERSONAL HELPERS
