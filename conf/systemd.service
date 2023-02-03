@@ -1,6 +1,8 @@
 [Unit]
 Description=__APP__ search index daemon
 After=network.target
+After=elasticsearch8.service
+Requires=elasticsearch8.service
 
 [Service]
 Type=simple

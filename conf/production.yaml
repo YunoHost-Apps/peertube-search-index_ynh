@@ -11,5 +11,6 @@ elastic-search:
   hostname: 'localhost'
   port: __ES_PORT__
   indexes:
-    videos: 'peertube-index-videos'
-    channels: 'peertube-index-channels'
+    videos: '__APP__-videos'
+    channels: '__APP__-channels'
+    playlists: '__APP__-playlists'
