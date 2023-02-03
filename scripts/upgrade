@@ -20,6 +20,7 @@ domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 port=$(ynh_app_setting_get --app=$app --key=port)
+es_port=$(ynh_app_setting_get --app=elasticsearch8 --key=port)
 
 #=================================================
 # CHECK VERSION
@@ -104,10 +105,13 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Upgrading dependencies..."
 
+if ynh_compare_current_package_version --comparison lt --version 0.0.1.2023-01-04~ynh1; then
+	# Remove elasticsearch from repositories
+	ynh_remove_app_dependencies
+fi
+
+ynh_install_apps --apps="$app_dependencies"
 ynh_install_app_dependencies $pkg_dependencies
-ynh_install_extra_app_dependencies --repo="deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main" --package="$extra_pkg_dependencies" --key="https://artifacts.elastic.co/GPG-KEY-elasticsearch"
-systemctl enable elasticsearch.service --quiet
-systemctl start elasticsearch.service
 ynh_install_nodejs --nodejs_version=$NODEJS_VERSION
 ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
 

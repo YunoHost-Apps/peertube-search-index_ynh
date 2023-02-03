@@ -18,6 +18,8 @@
 		# upgrade=1	from_commit=e9864a6c794ba3ec5e6359b298d299f513a157e7
 		# 0.0.1.2021.12.28~ynh1
 		upgrade=1	from_commit=3409d4986706a0b89c36447a2f435f4cd8dde155
+		# 0.0.1.2022.06.03~ynh1
+		upgrade=1	from_commit=baacd49237e18002e2048516f7f25487394a9197
 		backup_restore=1
 		multi_instance=1
 		port_already_use=0

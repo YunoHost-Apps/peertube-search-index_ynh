@@ -6,6 +6,7 @@
 
 # dependencies used by the app
 pkg_dependencies="git"
+app_dependencies="elasticsearch8"
 
 extra_pkg_dependencies="elasticsearch-oss"
 
