@@ -134,7 +134,7 @@ popd
 #=================================================
 ynh_script_progression --message="Updating a config file..."
 
-ynh_add_config --template="../conf/default.yaml" --destination="$final_path/config/production.yaml"
+ynh_add_config --template="../conf/production.yaml" --destination="$final_path/config/production.yaml"
 
 chmod 400 "$final_path/config/production.yaml"
 chown $app:$app "$final_path/config/production.yaml"

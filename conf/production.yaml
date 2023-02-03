@@ -1,0 +1,15 @@
+listen:
+  hostname: 'localhost'
+  port: __PORT__
+
+webserver:
+  https: false
+  hostname: 'localhost'
+  port: __PORT__
+
+elastic-search:
+  hostname: 'localhost'
+  port: __ES_PORT__
+  indexes:
+    videos: 'peertube-index-videos'
+    channels: 'peertube-index-channels'
