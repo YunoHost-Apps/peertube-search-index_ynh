@@ -125,7 +125,7 @@ pushd "$final_path"
 	ynh_exec_as $app git submodule update --init --recursive
 	ynh_use_nodejs
 	yarn install --pure-lockfile
-	ynh_exec_as $app $ynh_npm run build
+	$ynh_npm run build
 popd
 
 #=================================================
