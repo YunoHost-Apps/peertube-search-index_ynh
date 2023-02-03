@@ -86,13 +86,14 @@ ynh_script_progression --message="Setting up source files..."
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
 git clone $REPOSITORY $final_path --quiet
-pushd "$final_path"
-	git checkout $COMMIT --quiet
-popd
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:$app "$final_path"
+
+pushd "$final_path"
+	ynh_exec_as $app git checkout $COMMIT --quiet
+popd
 
 #=================================================
 # NGINX CONFIGURATION
@@ -110,10 +111,10 @@ ynh_add_nginx_config
 ynh_script_progression --message="Building..."
 
 pushd "$final_path"
-	git submodule update --init --recursive
+	ynh_exec_as $app git submodule update --init --recursive
 	ynh_use_nodejs
 	yarn install --pure-lockfile
-	mkdir "$final_path/dist"
+	ynh_exec_as $app mkdir "$final_path/dist"
 	$ynh_npm run build
 popd
 
