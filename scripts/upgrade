@@ -107,6 +107,11 @@ ynh_script_progression --message="Upgrading dependencies..."
 if ynh_compare_current_package_version --comparison lt --version 0.0.1.2023-01-04~ynh1; then
 	# Remove elasticsearch from repositories
 	ynh_remove_app_dependencies
+
+	# Fix rights
+	chmod 750 "$final_path"
+	chmod -R o-rwx "$final_path"
+	chown -R $app:$app "$final_path"
 fi
 
 ynh_install_apps --apps="$app_dependencies"
