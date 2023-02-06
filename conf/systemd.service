@@ -8,9 +8,10 @@ Requires=elasticsearch8.service
 Type=simple
 Environment=NODE_ENV=production
 Environment=NODE_CONFIG_DIR=__FINALPATH__/config
+Environment="__YNH_NODE_LOAD_PATH__"
 User=__APP__
 Group=__APP__
-ExecStart=__YNH_NPM__ start
+ExecStart=__YNH_NODE__ __FINALPATH__/dist/server.js
 WorkingDirectory=__FINALPATH__/
 StandardOutput=syslog
 StandardError=syslog
