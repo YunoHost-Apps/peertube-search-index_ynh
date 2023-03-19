@@ -5,15 +5,16 @@ It shall NOT be edited by hand.
 
 # PeerTube search-index pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+
 [![Installer PeerTube search-index avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer PeerTube search-index rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer PeerTube search-index rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
@@ -22,9 +23,9 @@ A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, d
 
 **Démo :** https://search.joinpeertube.org/
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de PeerTube search-index](./doc/screenshots/sepia-search-screenshot.png)
+![Capture d’écran de PeerTube search-index](./doc/screenshots/sepia-search-screenshot.png)
 
 ## Avertissements / informations importantes
 
@@ -38,9 +39,9 @@ To configure this app: modify the file `/var/www/peertube-search-index/config/pr
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://search.joinpeertube.org/>
-* Documentation officielle de l'admin : <https://framagit.org/framasoft/peertube/search-index>
-* Dépôt de code officiel de l'app : <https://framagit.org/framasoft/peertube/search-index>
+* Site officiel de l’app : <https://search.joinpeertube.org/>
+* Documentation officielle de l’admin : <https://framagit.org/framasoft/peertube/search-index>
+* Dépôt de code officiel de l’app : <https://framagit.org/framasoft/peertube/search-index>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_peertube-search-index>
 * Signaler un bug : <https://github.com/YunoHost-Apps/peertube-search-index_ynh/issues>
 
@@ -56,4 +57,4 @@ ou
 sudo yunohost app upgrade peertube-search-index -u https://github.com/YunoHost-Apps/peertube-search-index_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
