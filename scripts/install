@@ -85,6 +85,8 @@ ynh_system_user_create --username=$app --home_dir=$final_path
 ynh_script_progression --message="Setting up source files..."
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+git config --system --add safe.directory $final_path
+
 # Download, check integrity, uncompress and patch the source from app.src
 git clone $REPOSITORY $final_path --quiet
 pushd "$final_path"
