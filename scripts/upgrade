@@ -63,6 +63,11 @@ if ynh_legacy_permissions_exists; then
 	ynh_app_setting_delete --app=$app --key=is_public
 fi
 
+# Fix upgrade from 0.0.1.2022.06.03~ynh1
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:$app "$final_path"
+
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
@@ -121,8 +126,9 @@ ynh_script_progression --message="Building..."
 pushd "$final_path"
 	ynh_exec_as $app git submodule update --init --recursive
 	ynh_use_nodejs
-	yarn install --pure-lockfile
-	$ynh_npm run build
+	ynh_exec_as $app env $ynh_node_load_PATH yarn install --pure-lockfile
+	ynh_exec_as $app mkdir -p "$final_path/dist"
+	ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm run build
 popd
 
 #=================================================
