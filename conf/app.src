@@ -1,5 +1,5 @@
-SOURCE_URL=https://framagit.org/framasoft/peertube/search-index/-/archive/b44e850fa1604cebac19eb822e9d555f673085b0/search-index-b44e850fa1604cebac19eb822e9d555f673085b0.tar.gz
-SOURCE_SUM=7a68fd70aeaac05d06fbbb3c8cf7a375e9d2e112235e4af6857630380e114b18
+SOURCE_URL=https://framagit.org/framasoft/peertube/search-index/-/archive/36a36379b469982e6b2fc219825283e2470135e7/search-index-36a36379b469982e6b2fc219825283e2470135e7.tar.gz
+SOURCE_SUM=d5f92138c38642cb1cf559f2260652203aa38cfd03c5811c49e9299d1cdfe3ef
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
