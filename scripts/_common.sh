@@ -9,7 +9,7 @@ pkg_dependencies="git"
 
 extra_pkg_dependencies="elasticsearch-oss"
 
-NODEJS_VERSION=14
+NODEJS_VERSION=16
 
 REPOSITORY="https://framagit.org/framasoft/peertube/search-index"
 
