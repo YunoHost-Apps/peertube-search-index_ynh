@@ -37,12 +37,16 @@ A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, d
 
 To configure this app: modify the file `/var/www/peertube-search-index/config/production.yaml` with SSH.
 
+## :red_circle: Fonctions indésirables
+
+- **Not totally free upstream**: The packaged app is under an overall free licence, but with clauses that restrict its use.
+
 ## Documentations et ressources
 
 * Site officiel de l’app : <https://search.joinpeertube.org/>
 * Documentation officielle de l’admin : <https://framagit.org/framasoft/peertube/search-index>
 * Dépôt de code officiel de l’app : <https://framagit.org/framasoft/peertube/search-index>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_peertube-search-index>
+* YunoHost Store: <https://apps.yunohost.org/app/peertube-search-index>
 * Signaler un bug : <https://github.com/YunoHost-Apps/peertube-search-index_ynh/issues>
 
 ## Informations pour les développeurs
