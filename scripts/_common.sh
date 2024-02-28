@@ -22,7 +22,7 @@ _git_clone_or_pull() {
     else
         ynh_exec_as "$app" git clone "$upstream_repository" "$repo_dir" --quiet
     fi
-    ynh_exec_as "$app" git -C "$repo_dir" checkout "$upstream_commit"
+    ynh_exec_as "$app" git -C "$repo_dir" checkout "$upstream_commit" --quiet
     ynh_exec_as "$app" git -C "$repo_dir" submodule update --init --recursive
 }
 
