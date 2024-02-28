@@ -5,11 +5,11 @@ After=network.target
 [Service]
 Type=simple
 Environment=NODE_ENV=production
-Environment=NODE_CONFIG_DIR=__FINALPATH__/config
+Environment=NODE_CONFIG_DIR=__INSTALL_DIR__/config
 User=__APP__
 Group=__APP__
 ExecStart=__YNH_NPM__ start
-WorkingDirectory=__FINALPATH__/
+WorkingDirectory=__INSTALL_DIR__/
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=__APP__
