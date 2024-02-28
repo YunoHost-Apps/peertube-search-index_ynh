@@ -39,7 +39,7 @@ ynh_script_progression --message="Ensuring downward compatibility..."
 # Move git repository one step lower
 if [ -d "$install_dir/.git" ]; then
     mkdir "${install_dir}__tmp__"
-    mv "$install_dir" "${install_dir}__tmp__"
+    mv "$install_dir" "${install_dir}__tmp__/sources"
     mv "${install_dir}__tmp__" "$install_dir"
 fi
 
@@ -62,10 +62,10 @@ chown -R "$app:$app" "$install_dir"
 #=================================================
 ynh_script_progression --message="Building..."
 
-pushd "$install_dir"
+pushd "$install_dir/sources"
     ynh_use_nodejs
     ynh_exec_as "$app" env "$ynh_node_load_PATH" yarn install --pure-lockfile
-    ynh_exec_as "$app" mkdir -p "$install_dir/dist"
+    ynh_exec_as "$app" mkdir -p "dist"
     ynh_exec_as "$app" env "$ynh_node_load_PATH" "$ynh_npm" run build
 popd
 
@@ -74,10 +74,10 @@ popd
 #=================================================
 ynh_script_progression --message="Updating a config file..."
 
-ynh_add_config --template="default.yaml" --destination="$install_dir/config/production.yaml"
+ynh_add_config --template="default.yaml" --destination="$install_dir/sources/config/production.yaml"
 
-chmod 400 "$install_dir/config/production.yaml"
-chown "$app:$app" "$install_dir/config/production.yaml"
+chmod 400 "$install_dir/sources/config/production.yaml"
+chown "$app:$app" "$install_dir/sources/config/production.yaml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
