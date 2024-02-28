@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 Environment=NODE_ENV=production
+Environment="__YNH_NODE_LOAD_PATH__"
 Environment=NODE_CONFIG_DIR=__INSTALL_DIR__/sources/config
 User=__APP__
 Group=__APP__
