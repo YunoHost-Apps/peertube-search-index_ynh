@@ -1,0 +1,69 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "peertube-search-index"
+name = "PeerTube search-index"
+description.en = "Search engine for PeerTube videos and channels"
+description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
+
+version = "0.0.1.2023.08.08~ynh1"
+
+maintainers = ["yalh76"]
+
+[upstream]
+license = "AGPL-3.0-only"
+website = "https://search.joinpeertube.org/"
+demo = "https://search.joinpeertube.org/"
+admindoc = "https://framagit.org/framasoft/peertube/search-index"
+code = "https://framagit.org/framasoft/peertube/search-index"
+fund = "https://framasoft.org/fr/#support"
+
+[integration]
+yunohost = ">= 4.3.0"
+architectures = "all"
+multi_instance = true
+ldap = "not_relevant"
+sso = "not_relevant"
+disk = "2000M"
+ram.build = "2000M"
+ram.runtime = "2000M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+    [resources.sources.main]
+    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/316adda0db184cb36f0645a60dc8f6a1611ecd28/search-index-316adda0db184cb36f0645a60dc8f6a1611ecd28.tar.gz"
+    sha256 = "d5f92138c38642cb1cf559f2260652203aa38cfd03c5811c49e9299d1cdfe3ef"
+    # Unused because of submodules...
+    prefetch = false
+    autoupdate.strategy = "latest_gitlab_tag"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
+    main.default = 8095
+
+    [resources.apt]
+    packages = ["git", ]
+
+    [resources.apt.extras.elastic]
+    repo = "deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main"
+    key = "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+    packages = ["elasticsearch-oss"]
+
+    [resources.apt.extras.yarn]
+    repo = "deb https://dl.yarnpkg.com/debian/ stable main"
+    key = "https://dl.yarnpkg.com/debian/pubkey.gpg"
+    packages = ["yarn"]

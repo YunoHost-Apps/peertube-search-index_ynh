@@ -10,114 +10,42 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# MANAGE SCRIPT FAILURE
+# INSTALL NODEJS
 #=================================================
+ynh_script_progression --message="Installing NodeJS..."
 
-ynh_clean_setup () {
-	true
-}
-# Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
+ynh_install_nodejs --nodejs_version="$NODEJS_VERSION"
 
 #=================================================
-# RETRIEVE ARGUMENTS FROM THE MANIFEST
+# START ELASTICSEARCH
 #=================================================
+ynh_script_progression --message="Starting elasticsearch..."
 
-domain=$YNH_APP_ARG_DOMAIN
-path_url="/"
-is_public=$YNH_APP_ARG_IS_PUBLIC
+# Fix permissions in case of remove/reinstall
+chown -R elasticsearch:elasticsearch /var/lib/elasticsearch
 
-app=$YNH_APP_INSTANCE_NAME
-
-#=================================================
-# CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
-#=================================================
-ynh_script_progression --message="Validating installation parameters..."
-
-final_path=/var/www/$app
-test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
-
-# Register (book) web path
-ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
-
-#=================================================
-# STORE SETTINGS FROM MANIFEST
-#=================================================
-ynh_script_progression --message="Storing installation settings..."
-
-ynh_app_setting_set --app=$app --key=domain --value=$domain
-ynh_app_setting_set --app=$app --key=path --value=$path_url
-
-#=================================================
-# STANDARD MODIFICATIONS
-#=================================================
-# FIND AND OPEN A PORT
-#=================================================
-ynh_script_progression --message="Finding an available port..."
-
-# Find an available port
-port=$(ynh_find_port --port=8095)
-ynh_app_setting_set --app=$app --key=port --value=$port
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Installing dependencies..."
-
-ynh_install_app_dependencies $pkg_dependencies
-ynh_install_extra_app_dependencies --repo="deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main" --package="$extra_pkg_dependencies" --key="https://artifacts.elastic.co/GPG-KEY-elasticsearch"
 systemctl enable elasticsearch.service --quiet
 systemctl start elasticsearch.service
-ynh_install_nodejs --nodejs_version=$NODEJS_VERSION
-ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Configuring system user..."
-
-# Create a system user
-ynh_system_user_create --username=$app --home_dir=$final_path
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..."
 
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-# Download, check integrity, uncompress and patch the source from app.src
+_git_clone_or_pull "$install_dir/sources"
+chmod -R o-rwx "$install_dir"
+chown -R "$app:$app" "$install_dir"
 
-install -d -o $app -g $app -m 0750 $final_path
-ynh_exec_as $app git clone $REPOSITORY $final_path --quiet
-pushd "$final_path"
-	ynh_exec_as $app git checkout $COMMIT --quiet
-popd
-
-chmod 750 "$final_path"
-chmod -R o-rwx "$final_path"
-chown -R $app:$app "$final_path"
-
-#=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring NGINX web server..."
-
-# Create a dedicated NGINX config
-ynh_add_nginx_config
-
-#=================================================
-# SPECIFIC SETUP
 #=================================================
 # BUILDING
 #=================================================
 ynh_script_progression --message="Building..."
 
-pushd "$final_path"
-	ynh_exec_as $app git submodule update --init --recursive
-	ynh_use_nodejs
-	ynh_exec_as $app env $ynh_node_load_PATH yarn install --pure-lockfile
-	ynh_exec_as $app mkdir -p "$final_path/dist"
-	ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm run build
+pushd "$install_dir/sources"
+    ynh_use_nodejs
+    ynh_exec_as "$app" env "$ynh_node_load_PATH" yarn install --pure-lockfile
+    ynh_exec_as "$app" mkdir -p "dist"
+    ynh_exec_as "$app" env "$ynh_node_load_PATH" "$ynh_npm" run build
 popd
 
 #=================================================
@@ -125,63 +53,33 @@ popd
 #=================================================
 ynh_script_progression --message="Adding a config file..."
 
-ynh_add_config --template="../conf/default.yaml" --destination="$final_path/config/production.yaml"
+ynh_add_config --template="default.yaml" --destination="$install_dir/sources/config/production.yaml"
 
-chmod 400 "$final_path/config/production.yaml"
-chown $app:$app "$final_path/config/production.yaml"
+chmod 400 "$install_dir/sources/config/production.yaml"
+chown "$app:$app" "$install_dir/sources/config/production.yaml"
 
 #=================================================
-# SETUP SYSTEMD
+# SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring a systemd service..."
+ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
 
 # Create a dedicated systemd config
 ynh_add_systemd_config
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression --message="Configuring log rotation..."
+yunohost service add "$app" --description="$app search index daemon"
 
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate
 
 #=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..."
-
-yunohost service add $app --description="$app search index daemon"
-
-#=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..."
+ynh_script_progression --message="Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --line_match="Server listening on port"
-
-#=================================================
-# SETUP SSOWAT
-#=================================================
-ynh_script_progression --message="Configuring permissions..."
-
-# Make app public if necessary
-if [ $is_public -eq 1 ]
-then
-	# Everyone can access the app.
-	# The "main" permission is automatically created before the install script.
-	ynh_permission_update --permission="main" --add="visitors"
-fi
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression --message="Reloading NGINX web server..."
-
-ynh_systemd_action --service_name=nginx --action=reload
+ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd" --line_match="Server listening on port"
 
 #=================================================
 # END OF SCRIPT
