@@ -4,4 +4,4 @@ test_format = 1.0
 
 [default]
 
-    test_upgrade_from.3409d4986706a0b89c36447a2f435f4cd8dde155.name = "0.0.1.2021.12.28~ynh1"
+    test_upgrade_from.63fe9f9406b112c086b23f68aaaee3d3d990b862.name = "Last packaging v1 version"
