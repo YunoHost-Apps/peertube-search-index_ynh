@@ -19,7 +19,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**Shipped version:** 0.0.1.2023.08.08~ynh1
+**Shipped version:** 0.0.1.2023.08.08~ynh2
 
 **Demo:** https://search.joinpeertube.org/
 
