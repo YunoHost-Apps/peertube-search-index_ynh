@@ -7,7 +7,7 @@ name = "PeerTube search-index"
 description.en = "Search engine for PeerTube videos and channels"
 description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
 
-version = "0.0.1.2023.08.08~ynh1"
+version = "0.0.1.2023.08.08~ynh2"
 
 maintainers = ["yalh76"]
 
@@ -20,7 +20,7 @@ code = "https://framagit.org/framasoft/peertube/search-index"
 fund = "https://framasoft.org/fr/#support"
 
 [integration]
-yunohost = ">= 4.3.0"
+yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
 ldap = "not_relevant"
