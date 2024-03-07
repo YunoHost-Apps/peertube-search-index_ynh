@@ -39,7 +39,7 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
 
 [resources]
     [resources.sources.main]
-    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/36a36379b469982e6b2fc219825283e2470135e7/search-index-36a36379b469982e6b2fc219825283e2470135e7.tar.gz"
+    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/316adda0db184cb36f0645a60dc8f6a1611ecd28/search-index-316adda0db184cb36f0645a60dc8f6a1611ecd28.tar.gz"
     sha256 = "d5f92138c38642cb1cf559f2260652203aa38cfd03c5811c49e9299d1cdfe3ef"
     # Unused because of submodules...
     prefetch = false
