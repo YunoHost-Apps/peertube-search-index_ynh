@@ -27,9 +27,9 @@ A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, d
 
 ![Captura de pantalla de PeerTube search-index](./doc/screenshots/sepia-search-screenshot.png)
 
-## :red_circle: Caraterísticas cuestionables
+## :red_circle: Debes considerar
 
-- **Not totally free upstream**: The packaged app is under an overall free licence, but with clauses that restrict its use.
+- **Not totally free upstream**: The packaged app is under an overall free license, but with clauses that may restrict its use.
 
 ## Documentación e recursos
 

@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install PeerTube search-index with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install PeerTube search-index quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -29,7 +29,7 @@ A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, d
 
 ## :red_circle: Antifeatures
 
-- **Not totally free upstream**: The packaged app is under an overall free licence, but with clauses that restrict its use.
+- **Not totally free upstream**: The packaged app is under an overall free license, but with clauses that may restrict its use.
 
 ## Documentation and resources
 
