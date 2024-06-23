@@ -19,7 +19,7 @@ No se debe editar a mano.
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**Versión actual:** 0.0.1.2023.08.08~ynh2
+**Versión actual:** 1.0.0~ynh1
 
 **Demo:** <https://search.joinpeertube.org/>
 

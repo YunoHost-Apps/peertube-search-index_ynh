@@ -19,7 +19,7 @@
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**分发版本：** 0.0.1.2023.08.08~ynh2
+**分发版本：** 1.0.0~ynh1
 
 **演示：** <https://search.joinpeertube.org/>
 
