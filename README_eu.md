@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # PeerTube search-index YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
 
 [![Instalatu PeerTube search-index YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 

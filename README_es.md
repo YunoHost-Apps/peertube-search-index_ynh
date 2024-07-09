@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # PeerTube search-index para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
 
 [![Instalar PeerTube search-index con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
