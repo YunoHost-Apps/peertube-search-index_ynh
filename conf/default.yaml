@@ -7,17 +7,11 @@ webserver:
   hostname: 'localhost'
   port: __PORT__
 
-elastic-search:
-  # https or http
-  http: 'http'
-  auth:
-    username: null
-    password: null
-  ssl:
-    # Specificy a custom CA
-    ca: null
-  hostname: 'localhost'
-  port: 9200
+meilisearch:
+  host: 'http://127.0.0.1:7700'
+
+  api_key: null
+
   indexes:
     videos: 'peertube-index-videos'
     channels: 'peertube-index-channels'
