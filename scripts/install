@@ -17,15 +17,15 @@ ynh_script_progression --message="Installing NodeJS..."
 ynh_install_nodejs --nodejs_version="$NODEJS_VERSION"
 
 #=================================================
-# START ELASTICSEARCH
+# START MEILISEARCH
 #=================================================
-ynh_script_progression --message="Starting elasticsearch..."
+ynh_script_progression --message="Starting meilisearch..."
 
-# Fix permissions in case of remove/reinstall
-chown -R elasticsearch:elasticsearch /var/lib/elasticsearch
+# # Fix permissions in case of remove/reinstall
+# chown -R meilisearch:meilisearch /var/lib/meilisearch
 
-systemctl enable elasticsearch.service --quiet
-systemctl start elasticsearch.service
+# systemctl enable meilisearch.service --quiet
+# systemctl start meilisearch.service
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
