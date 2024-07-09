@@ -60,7 +60,7 @@ ram.runtime = "2000M"
 
     [resources.apt.extras.meilisearch]
     repo = "deb https://apt.fury.io/meilisearch/ /"
-    # key = "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+    key = ""
     packages = ["meilisearch"]
 
     [resources.apt.extras.yarn]
