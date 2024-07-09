@@ -6,10 +6,10 @@ After=network.target
 Type=simple
 Environment=NODE_ENV=production
 Environment="__YNH_NODE_LOAD_PATH__"
-Environment=NODE_CONFIG_DIR=__INSTALL_DIR__/sources/config
+Environment=NODE_CONFIG_DIR=__INSTALL_DIR__/config
 User=__APP__
 Group=__APP__
-ExecStart=__YNH_NPM__ start
+ExecStart=__YNH_NODE__ __INSTALL_DIR__/sources/dist/server.js
 WorkingDirectory=__INSTALL_DIR__/sources/
 StandardOutput=syslog
 StandardError=syslog

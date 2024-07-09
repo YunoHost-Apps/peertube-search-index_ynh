@@ -74,10 +74,10 @@ popd
 #=================================================
 ynh_script_progression --message="Updating a config file..."
 
-ynh_add_config --template="default.yaml" --destination="$install_dir/sources/config/production.yaml"
+ynh_add_config --template="default.yaml" --destination="$install_dir/config/production.yaml"
 
-chmod 400 "$install_dir/sources/config/production.yaml"
-chown "$app:$app" "$install_dir/sources/config/production.yaml"
+chmod 400 "$install_dir/config/production.yaml"
+chown "$app:$app" "$install_dir/config/production.yaml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
