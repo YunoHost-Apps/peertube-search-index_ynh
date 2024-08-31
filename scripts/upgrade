@@ -1,32 +1,26 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Stopping $app's systemd service..."
+ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemd_action --service_name="$app" --action="stop" --log_path="systemd" --line_match="Stopped $app search index daemon"
+ynh_systemctl --service="$app" --action="stop" --log_path="systemd" --wait_until="Stopped $app search index daemon"
 
 #=================================================
 # INSTALL NODEJS
 #=================================================
-ynh_script_progression --message="Updating NodeJS..."
+ynh_script_progression "Updating NodeJS..."
 
-ynh_install_nodejs --nodejs_version="$NODEJS_VERSION"
+ynh_nodejs_install
 
 #=================================================
 # START ELASTICSEARCH
 #=================================================
-ynh_script_progression --message="Starting elasticsearch..."
+ynh_script_progression "Starting elasticsearch..."
 
 systemctl enable elasticsearch.service --quiet
 systemctl start elasticsearch.service
@@ -34,7 +28,7 @@ systemctl start elasticsearch.service
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression --message="Ensuring downward compatibility..."
+ynh_script_progression "Ensuring downward compatibility..."
 
 # Move git repository one step lower
 if [ -d "$install_dir/.git" ]; then
@@ -44,65 +38,63 @@ if [ -d "$install_dir/.git" ]; then
 fi
 
 # Fix upgrade from 0.0.1.2022.06.03~ynh1
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
-chown -R "$app:$app" "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 750 "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:$app" "$install_dir"
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Upgrading source files..."
+ynh_script_progression "Upgrading source files..."
 
 _git_clone_or_pull "$install_dir/sources"
-chmod -R o-rwx "$install_dir"
-chown -R "$app:$app" "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:$app" "$install_dir"
 #=================================================
 # BUILDING
 #=================================================
-ynh_script_progression --message="Building..."
+ynh_script_progression "Building..."
 
 pushd "$install_dir/sources"
-    ynh_use_nodejs
-    ynh_exec_as "$app" env "$ynh_node_load_PATH" yarn install --pure-lockfile
-    ynh_exec_as "$app" mkdir -p "dist"
-    ynh_exec_as "$app" env "$ynh_node_load_PATH" "$ynh_npm" run build
+
+    ynh_exec_as_app node_load_PATH" yarn install --pure-lockfile
+    ynh_exec_as_app mkdir -p "dist"
+    ynh_exec_as_app node_load_PATH" npm run build
 popd
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Updating a config file..."
+ynh_script_progression "Updating a config file..."
 
-ynh_add_config --template="default.yaml" --destination="$install_dir/sources/config/production.yaml"
+ynh_config_add --template="default.yaml" --destination="$install_dir/sources/config/production.yaml"
 
-chmod 400 "$install_dir/sources/config/production.yaml"
-chown "$app:$app" "$install_dir/sources/config/production.yaml"
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 400 "$install_dir/sources/config/production.yaml"
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown "$app:$app" "$install_dir/sources/config/production.yaml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
+ynh_script_progression "Upgrading system configurations related to $app..."
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 # Create a dedicated systemd config
-ynh_add_systemd_config
+ynh_config_add_systemd
 yunohost service add "$app" --description="$app search index daemon"
 
 # Use logrotate to manage app-specific logfile(s)
-ynh_use_logrotate --non-append
+ynh_config_add_logrotate
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting $app's systemd service..."
+ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd" --line_match="Server listening on port"
+ynh_systemctl --service="$app" --action="start" --log_path="systemd" --wait_until="Server listening on port"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed"
+ynh_script_progression "Upgrade of $app completed"
