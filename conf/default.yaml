@@ -23,6 +23,10 @@ elastic-search:
     channels: 'peertube-index-channels'
     playlists: 'peertube-index-playlists'
 
+  # Avoid updating index settings at startup
+  # Set to true when a new release of the search index updates index settings
+  #force_settings_update_at_startup: false
+
 log:
   level: 'debug' # debug/info/warning/error
 
@@ -142,3 +146,14 @@ api:
     enabled: false
     # Array of hosts
     hosts: null
+
+indexer:
+  # How many hosts in parallel to index
+  host_concurrency: 10
+
+  # How much time to wait before bulk indexing in Meilisearch data
+  bulk_indexation_interval_ms: 10000
+
+  videos:
+    max_description_characters: 250
+
