@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # PeerTube search-index para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
 
 [![Instalar PeerTube search-index con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
@@ -19,7 +19,7 @@ No se debe editar a mano.
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**Versión actual:** 0.0.1.2023.08.08~ynh2
+**Versión actual:** 0.0.1.2024.11.22~ynh1
 
 **Demo:** <https://search.joinpeertube.org/>
 
@@ -41,7 +41,7 @@ A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, d
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/peertube-search-index_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/peertube-search-index_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 

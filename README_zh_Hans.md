@@ -5,7 +5,7 @@
 
 # YunoHost 上的 PeerTube search-index
 
-[![集成程度](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![工作状态](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
 
 [![使用 YunoHost 安装 PeerTube search-index](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
@@ -19,7 +19,7 @@
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**分发版本：** 0.0.1.2023.08.08~ynh2
+**分发版本：** 0.0.1.2024.11.22~ynh1
 
 **演示：** <https://search.joinpeertube.org/>
 
