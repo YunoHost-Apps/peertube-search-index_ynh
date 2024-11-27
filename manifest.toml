@@ -7,7 +7,7 @@ name = "PeerTube search-index"
 description.en = "Search engine for PeerTube videos and channels"
 description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
 
-version = "0.0.1.2024.11.22~ynh1"
+version = "0.0.1.2024.11.27~ynh1"
 
 maintainers = ["yalh76"]
 
