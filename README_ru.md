@@ -5,7 +5,9 @@
 
 # PeerTube search-index для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/peertube-search-index)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/)
+![Состояние работы](https://apps.yunohost.org/badge/state/peertube-search-index)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/peertube-search-index)
 
 [![Установите PeerTube search-index с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 

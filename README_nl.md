@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # PeerTube search-index voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/peertube-search-index)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/peertube-search-index)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/peertube-search-index)
 
 [![PeerTube search-index met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 

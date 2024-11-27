@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # PeerTube search-index untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/peertube-search-index)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/)
+![Status kerja](https://apps.yunohost.org/badge/state/peertube-search-index)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/peertube-search-index)
 
 [![Pasang PeerTube search-index dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
