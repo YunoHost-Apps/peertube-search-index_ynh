@@ -54,14 +54,10 @@ ram.runtime = "2000M"
 
     [resources.ports]
     main.default = 8095
+    meilisearch.default = 17070
 
     [resources.apt]
     packages = ["git", ]
-
-    [resources.apt.extras.elastic]
-    repo = "deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main"
-    key = "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
-    packages = ["elasticsearch-oss"]
 
     [resources.apt.extras.yarn]
     repo = "deb https://dl.yarnpkg.com/debian/ stable main"

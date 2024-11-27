@@ -8,7 +8,7 @@ webserver:
   port: __PORT__
 
 meilisearch:
-  host: 'http://127.0.0.1:__MEILISEARCH_PORT__'
+  host: 'http://127.0.0.1:__PORT_MEILISEARCH__'
 
   api_key: null
 
