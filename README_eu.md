@@ -21,7 +21,7 @@ EZ editatu eskuz.
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**Paketatutako bertsioa:** 0.0.1.2024.11.22~ynh1
+**Paketatutako bertsioa:** 0.0.1.2024.11.27~ynh1
 
 **Demoa:** <https://search.joinpeertube.org/>
 
