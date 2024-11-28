@@ -7,7 +7,7 @@ name = "PeerTube search-index"
 description.en = "Search engine for PeerTube videos and channels"
 description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
 
-version = "0.0.1.2023.08.08~ynh2"
+version = "0.0.1.2024.11.27~ynh1"
 
 maintainers = ["yalh76"]
 
@@ -39,8 +39,8 @@ ram.runtime = "2000M"
 
 [resources]
     [resources.sources.main]
-    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/316adda0db184cb36f0645a60dc8f6a1611ecd28/search-index-316adda0db184cb36f0645a60dc8f6a1611ecd28.tar.gz"
-    sha256 = "d5f92138c38642cb1cf559f2260652203aa38cfd03c5811c49e9299d1cdfe3ef"
+    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/8dfd71904ba405841cc2500447955314959c307a/search-index-8dfd71904ba405841cc2500447955314959c307a.tar.gz"
+    sha256 = "05e99c0dc6eaa0730b58f5c35670b538b7fa5bfd7b9ee1a191a45876d7eccbb6"
     # Unused because of submodules...
     prefetch = false
     autoupdate.strategy = "latest_gitlab_tag"
@@ -54,14 +54,10 @@ ram.runtime = "2000M"
 
     [resources.ports]
     main.default = 8095
+    meilisearch.default = 17070
 
     [resources.apt]
     packages = ["git", ]
-
-    [resources.apt.extras.elastic]
-    repo = "deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main"
-    key = "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
-    packages = ["elasticsearch-oss"]
 
     [resources.apt.extras.yarn]
     repo = "deb https://dl.yarnpkg.com/debian/ stable main"
