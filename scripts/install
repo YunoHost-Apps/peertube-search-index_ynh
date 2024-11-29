@@ -17,17 +17,6 @@ ynh_script_progression --message="Installing NodeJS..."
 ynh_install_nodejs --nodejs_version="$NODEJS_VERSION"
 
 #=================================================
-# START ELASTICSEARCH
-#=================================================
-ynh_script_progression --message="Starting elasticsearch..."
-
-# Fix permissions in case of remove/reinstall
-chown -R elasticsearch:elasticsearch /var/lib/elasticsearch
-
-systemctl enable elasticsearch.service --quiet
-systemctl start elasticsearch.service
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..."
@@ -49,6 +38,16 @@ pushd "$install_dir/sources"
 popd
 
 #=================================================
+# INSTALL MEILISEARCH
+#=================================================
+ynh_script_progression --message="Installing Meilisearch..."
+
+ynh_exec_as "$app" mkdir -p "$install_dir/meilisearch"
+pushd "$install_dir/meilisearch"
+    ynh_exec_as "$app" curl -L https://install.meilisearch.com | ynh_exec_as "$app" sh
+popd
+
+#=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding a config file..."
@@ -57,6 +56,11 @@ ynh_add_config --template="default.yaml" --destination="$install_dir/sources/con
 
 chmod 400 "$install_dir/sources/config/production.yaml"
 chown "$app:$app" "$install_dir/sources/config/production.yaml"
+
+ynh_add_config --template="config.toml" --destination="$install_dir/meilisearch/config.toml"
+
+chmod 400 "$install_dir/meilisearch/config.toml"
+chown "$app:$app" "$install_dir/meilisearch/config.toml"
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -70,6 +74,9 @@ ynh_add_nginx_config
 ynh_add_systemd_config
 yunohost service add "$app" --description="$app search index daemon"
 
+ynh_add_systemd_config --service="$app-meilisearch" --template="meilisearch.service"
+yunohost service add "$app-meilisearch" --description="$app Meilisearch daemon"
+
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate
 
@@ -79,6 +86,7 @@ ynh_use_logrotate
 ynh_script_progression --message="Starting $app's systemd service..."
 
 # Start a systemd service
+ynh_systemd_action --service_name="$app-meilisearch" --action="start" --log_path="systemd"
 ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd" --line_match="Server listening on port"
 
 #=================================================

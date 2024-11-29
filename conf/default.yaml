@@ -7,21 +7,19 @@ webserver:
   hostname: 'localhost'
   port: __PORT__
 
-elastic-search:
-  # https or http
-  http: 'http'
-  auth:
-    username: null
-    password: null
-  ssl:
-    # Specificy a custom CA
-    ca: null
-  hostname: 'localhost'
-  port: 9200
+meilisearch:
+  host: 'http://127.0.0.1:__PORT_MEILISEARCH__'
+
+  api_key: null
+
   indexes:
     videos: 'peertube-index-videos'
     channels: 'peertube-index-channels'
     playlists: 'peertube-index-playlists'
+
+  # Avoid updating index settings at startup
+  # Set to true when a new release of the search index updates index settings
+  #force_settings_update_at_startup: false
 
 log:
   level: 'debug' # debug/info/warning/error
@@ -54,91 +52,20 @@ instances-index:
     enabled: false
     hosts: null
 
-videos-search:
-  # Allow client to send browser language to boost results score that are in these languages
-  boost-languages:
-    enabled: true
-
-  # Add ability to change videos search fields boost and match value
-  # See https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html for more information
-  #
-  # If boost == 0, the field will not be part of the search
-  #
-  # match_type could be 'default' or 'phrase'
-  #  * default: use default Elastic Search match query, including fuzziness
-  #  * phrase: use Elastic Search phrase match query
-  search-fields:
-    uuid:
-      boost: 100
-      match_type: 'default'
-    short-uuid:
-      boost: 100
-      match_type: 'default'
-    name:
-      boost: 5
-      match_type: 'default'
-    description:
-      boost: 1
-      match_type: 'phrase'
-    tags:
-      boost: 2
-      match_type: 'default'
-    account-display-name:
-      boost: 2
-      match_type: 'default'
-    channel-display-name:
-      boost: 2
-      match_type: 'default'
-
-channels-search:
-  # Add ability to change channels search fields boost and match value
-  # See https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html for more information
-  #
-  # If boost == 0, the field will not be part of the search
-  #
-  # match_type could be 'default' or 'phrase'
-  #  * default: use default Elastic Search match query, including fuzziness
-  #  * phrase: use Elastic Search phrase match query
-  search-fields:
-    name:
-      boost: 5
-      match_type: 'default'
-    description:
-      boost: 1
-      match_type: 'phrase'
-    display-name:
-      boost: 3
-      match_type: 'default'
-    account-display-name:
-      boost: 2
-      match_type: 'default'
-
-playlists-search:
-  # Add ability to change playlists search fields boost and match value
-  # See https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html for more information
-  #
-  # If boost == 0, the field will not be part of the search
-  #
-  # match_type could be 'default' or 'phrase'
-  #  * default: use default Elastic Search match query, including fuzziness
-  #  * phrase: use Elastic Search phrase match query
-  search-fields:
-    uuid:
-      boost: 100
-      match_type: 'default'
-    short-uuid:
-      boost: 100
-      match_type: 'default'
-    display-name:
-      boost: 5
-      match_type: 'default'
-    description:
-      boost: 1
-      match_type: 'phrase'
-
 api:
   # Blacklist hosts that will not be returned by the search API
   blacklist:
     enabled: false
     # Array of hosts
     hosts: null
+
+indexer:
+  # How many hosts in parallel to index
+  host_concurrency: 10
+
+  # How much time to wait before bulk indexing in Meilisearch data
+  bulk_indexation_interval_ms: 10000
+
+  videos:
+    max_description_characters: 250
+

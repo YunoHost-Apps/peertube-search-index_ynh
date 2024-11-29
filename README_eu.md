@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # PeerTube search-index YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/peertube-search-index.svg)](https://dash.yunohost.org/appci/app/peertube-search-index) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/peertube-search-index.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/peertube-search-index)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/peertube-search-index)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/peertube-search-index)
 
 [![Instalatu PeerTube search-index YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=peertube-search-index)
 
@@ -19,7 +21,7 @@ EZ editatu eskuz.
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**Paketatutako bertsioa:** 0.0.1.2023.08.08~ynh2
+**Paketatutako bertsioa:** 0.0.1.2024.11.27~ynh1
 
 **Demoa:** <https://search.joinpeertube.org/>
 
