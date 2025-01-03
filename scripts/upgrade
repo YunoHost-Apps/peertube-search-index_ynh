@@ -1,37 +1,30 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Stopping $app's systemd service..."
+ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemd_action --service_name="$app" --action="stop" --log_path="systemd"
-
-ynh_systemd_action --service_name="$app-meilisearch" --action="stop" --log_path="systemd"
+ynh_systemctl --service="$app" --action="stop" --log_path="systemd"
+ynh_systemctl --service="$app-meilisearch" --action="stop" --log_path="systemd"
 
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression --message="Ensuring downward compatibility..."
+ynh_script_progression "Ensuring downward compatibility..."
 
 # Move git repository one step lower
 if [ -d "$install_dir/.git" ]; then
     mkdir "${install_dir}__tmp__"
     mv "$install_dir" "${install_dir}__tmp__/sources"
     mv "${install_dir}__tmp__" "$install_dir"
-    ynh_secure_remove --file="$install_dir/sources/.cache"
-    ynh_secure_remove --file="$install_dir/sources/.npm"
-    ynh_secure_remove --file="$install_dir/sources/.yarn"
-    ynh_secure_remove --file="$install_dir/sources/PeerTube"
+    ynh_safe_rm "$install_dir/sources/.cache"
+    ynh_safe_rm "$install_dir/sources/.npm"
+    ynh_safe_rm "$install_dir/sources/.yarn"
+    ynh_safe_rm "$install_dir/sources/PeerTube"
 fi
 
 # Fix upgrade from 0.0.1.2022.06.03~ynh1
@@ -42,14 +35,14 @@ chown -R "$app:$app" "$install_dir"
 #=================================================
 # INSTALL NODEJS
 #=================================================
-ynh_script_progression --message="Updating NodeJS..."
+ynh_script_progression "Updating NodeJS..."
 
-ynh_install_nodejs --nodejs_version="$NODEJS_VERSION"
+ynh_nodejs_install
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Upgrading source files..."
+ynh_script_progression "Upgrading source files..."
 
 _git_clone_or_pull "$install_dir/sources"
 chmod -R o-rwx "$install_dir"
@@ -58,36 +51,36 @@ chown -R "$app:$app" "$install_dir"
 #=================================================
 # BUILDING
 #=================================================
-ynh_script_progression --message="Building..."
+ynh_script_progression "Building..."
 
 pushd "$install_dir/sources"
     ynh_use_nodejs
-    ynh_exec_as "$app" env "$ynh_node_load_PATH" yarn install --pure-lockfile
-    ynh_exec_as "$app" mkdir -p "dist"
-    ynh_exec_as "$app" env "$ynh_node_load_PATH" "$ynh_npm" run build
+    ynh_hide_warnings ynh_exec_as_app yarn install --pure-lockfile
+    ynh_exec_as_app mkdir -p "dist"
+    ynh_hide_warnings ynh_exec_as_app "$ynh_npm" run build
 popd
 
 #=================================================
 # INSTALL MEILISEARCH
 #=================================================
-ynh_script_progression --message="Installing Meilisearch..."
+ynh_script_progression "Installing Meilisearch..."
 
-ynh_exec_as "$app" mkdir -p "$install_dir/meilisearch"
+ynh_exec_as_app mkdir -p "$install_dir/meilisearch"
 pushd "$install_dir/meilisearch"
-    ynh_exec_as "$app" curl -L https://install.meilisearch.com | ynh_exec_as "$app" sh
+    curl -L https://install.meilisearch.com | ynh_exec_as_app sh
 popd
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Updating a config file..."
+ynh_script_progression "Updating a config file..."
 
-ynh_add_config --template="default.yaml" --destination="$install_dir/sources/config/production.yaml"
+ynh_config_add --template="default.yaml" --destination="$install_dir/sources/config/production.yaml"
 
 chmod 400 "$install_dir/sources/config/production.yaml"
 chown "$app:$app" "$install_dir/sources/config/production.yaml"
 
-ynh_add_config --template="config.toml" --destination="$install_dir/meilisearch/config.toml"
+ynh_config_add --template="config.toml" --destination="$install_dir/meilisearch/config.toml"
 
 chmod 400 "$install_dir/meilisearch/config.toml"
 chown "$app:$app" "$install_dir/meilisearch/config.toml"
@@ -95,31 +88,28 @@ chown "$app:$app" "$install_dir/meilisearch/config.toml"
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
+ynh_script_progression "Upgrading system configurations related to $app..."
 
-# Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-# Create a dedicated systemd config
-ynh_add_systemd_config
+ynh_config_add_systemd
 yunohost service add "$app" --description="$app search index daemon"
 
-ynh_add_systemd_config --service="$app-meilisearch" --template="meilisearch.service"
+ynh_config_add_systemd --service="$app-meilisearch" --template="meilisearch.service"
 yunohost service add "$app-meilisearch" --description="$app Meilisearch daemon"
 
-# Use logrotate to manage app-specific logfile(s)
-ynh_use_logrotate --non-append
+ynh_config_add_logrotate
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting $app's systemd service..."
+ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemd_action --service_name="$app-meilisearch" --action="start" --log_path="systemd"
-ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd" --line_match="Server listening on port"
+ynh_systemctl --service="$app-meilisearch" --action="start" --log_path="systemd"
+ynh_systemctl --service="$app" --action="start" --log_path="systemd" --wait_until="Server listening on port"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed"
+ynh_script_progression "Upgrade of $app completed"
