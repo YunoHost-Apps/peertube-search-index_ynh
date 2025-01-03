@@ -21,7 +21,7 @@ Hij mag NIET handmatig aangepast worden.
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**Geleverde versie:** 0.0.1.2024.11.27~ynh1
+**Geleverde versie:** 0.0.1.2024.11.27~ynh2
 
 **Demo:** <https://search.joinpeertube.org/>
 

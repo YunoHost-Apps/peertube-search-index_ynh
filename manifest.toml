@@ -7,7 +7,7 @@ name = "PeerTube search-index"
 description.en = "Search engine for PeerTube videos and channels"
 description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
 
-version = "0.0.1.2024.11.27~ynh1"
+version = "0.0.1.2024.11.27~ynh2"
 
 maintainers = ["yalh76"]
 
@@ -43,7 +43,6 @@ ram.runtime = "2000M"
     sha256 = "05e99c0dc6eaa0730b58f5c35670b538b7fa5bfd7b9ee1a191a45876d7eccbb6"
     # Unused because of submodules...
     prefetch = false
-    autoupdate.strategy = "latest_gitlab_tag"
 
     [resources.system_user]
 
