@@ -21,7 +21,7 @@
 A search engine for [PeerTube](https://joinpeertube.org/) videos and channels, developed by Framasoft.
 
 
-**分发版本：** 0.0.1.2024.11.27~ynh1
+**分发版本：** 0.0.1.2024.11.27~ynh2
 
 **演示：** <https://search.joinpeertube.org/>
 
