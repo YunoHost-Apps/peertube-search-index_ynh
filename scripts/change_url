@@ -1,8 +1,6 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC STARTING
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
@@ -10,19 +8,18 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD MODIFICATIONS
-#=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemctl --service=$app --action="stop" --log_path="systemd" --wait_until="Stopped $app search index daemon"
+ynh_systemctl --service="$app" --action="stop" --log_path="systemd" --wait_until="Stopped $app search index daemon"
 
 #=================================================
 # MODIFY URL IN NGINX CONF
 #=================================================
 ynh_script_progression "Updating NGINX web server configuration..."
 
+# this will most likely adjust NGINX config correctly
 ynh_config_change_url_nginx
 
 #=================================================
@@ -30,7 +27,6 @@ ynh_config_change_url_nginx
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-# Start a systemd service
 ynh_systemctl --service="$app" --action="start" --log_path="systemd" --wait_until="Server listening on port"
 
 #=================================================
