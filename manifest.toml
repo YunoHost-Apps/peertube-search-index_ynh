@@ -17,14 +17,19 @@ website = "https://search.joinpeertube.org/"
 demo = "https://search.joinpeertube.org/"
 admindoc = "https://framagit.org/framasoft/peertube/search-index"
 code = "https://framagit.org/framasoft/peertube/search-index"
+
 fund = "https://framasoft.org/fr/#support"
 
 [integration]
 yunohost = ">= 11.2"
+helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
+
 ldap = "not_relevant"
+
 sso = "not_relevant"
+
 disk = "2000M"
 ram.build = "2000M"
 ram.runtime = "2000M"
@@ -43,10 +48,12 @@ ram.runtime = "2000M"
     sha256 = "05e99c0dc6eaa0730b58f5c35670b538b7fa5bfd7b9ee1a191a45876d7eccbb6"
     # Unused because of submodules...
     prefetch = false
+    autoupdate.strategy = "latest_gitlab_commit"
 
     [resources.system_user]
 
     [resources.install_dir]
+    group = "www-data:r-x"
 
     [resources.permissions]
     main.url = "/"
@@ -56,7 +63,7 @@ ram.runtime = "2000M"
     meilisearch.default = 17070
 
     [resources.apt]
-    packages = ["git", ]
+    packages = "git"
 
     [resources.apt.extras.yarn]
     repo = "deb https://dl.yarnpkg.com/debian/ stable main"
