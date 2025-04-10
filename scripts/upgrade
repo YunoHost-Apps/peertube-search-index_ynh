@@ -21,7 +21,7 @@ ynh_systemctl --service="$app-meilisearch" --action="stop" --log_path="systemd"
 #=================================================
 ynh_script_progression "Ensuring downward compatibility..."
 
-# Move git repository one step lower
+# Move git repository one step lower
 if [ -d "$install_dir/.git" ]; then
     mkdir "${install_dir}__tmp__"
     mv "$install_dir" "${install_dir}__tmp__/sources"
@@ -31,6 +31,8 @@ if [ -d "$install_dir/.git" ]; then
     ynh_safe_rm "$install_dir/sources/.yarn"
     ynh_safe_rm "$install_dir/sources/PeerTube"
 fi
+
+chown -R "$app:$app" "$install_dir"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
