@@ -15,7 +15,6 @@ maintainers = ["yalh76"]
 license = "AGPL-3.0-only"
 website = "https://search.joinpeertube.org/"
 demo = "https://search.joinpeertube.org/"
-admindoc = "https://framagit.org/framasoft/peertube/search-index"
 code = "https://framagit.org/framasoft/peertube/search-index"
 
 fund = "https://framasoft.org/fr/#support"

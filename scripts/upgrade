@@ -26,10 +26,10 @@ if [ -d "$install_dir/.git" ]; then
     mkdir "${install_dir}__tmp__"
     mv "$install_dir" "${install_dir}__tmp__/sources"
     mv "${install_dir}__tmp__" "$install_dir"
-    ynh_secure_remove --file="$install_dir/sources/.cache"
-    ynh_secure_remove --file="$install_dir/sources/.npm"
-    ynh_secure_remove --file="$install_dir/sources/.yarn"
-    ynh_secure_remove --file="$install_dir/sources/PeerTube"
+    ynh_safe_rm "$install_dir/sources/.cache"
+    ynh_safe_rm "$install_dir/sources/.npm"
+    ynh_safe_rm "$install_dir/sources/.yarn"
+    ynh_safe_rm "$install_dir/sources/PeerTube"
 fi
 
 #=================================================
