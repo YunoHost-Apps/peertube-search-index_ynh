@@ -5,8 +5,9 @@
 #=================================================
 
 source _common.sh
-source ynh_sources
 source /usr/share/yunohost/helpers
+source ynh_0-utils
+source ynh_sources
 
 #=================================================
 # STOP SYSTEMD SERVICE
