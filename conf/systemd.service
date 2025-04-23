@@ -4,13 +4,13 @@ After=network.target
 
 [Service]
 Type=simple
-Environment=NODE_ENV=production
-Environment="__YNH_NODE_LOAD_PATH__"
-Environment=NODE_CONFIG_DIR=__INSTALL_DIR__/sources/config
 User=__APP__
 Group=__APP__
-ExecStart=__YNH_NPM__ start
+Environment=NODE_ENV=production
+Environment="PATH=__PATH_WITH_NODEJS__"
+Environment=NODE_CONFIG_DIR=__INSTALL_DIR__/sources/config
 WorkingDirectory=__INSTALL_DIR__/sources/
+ExecStart=__NODEJS_DIR__/npm start
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=__APP__
