@@ -18,9 +18,9 @@ ynh_restore "$install_dir"
 #=================================================
 # INSTALL NODEJS
 #=================================================
-ynh_script_progression "Reinstalling NodeJS..."
+#REMOVEME? ynh_script_progression "Reinstalling NodeJS..."
 
-ynh_nodejs_install
+#REMOVEME? ynh_nodejs_install
 
 #=================================================
 # RESTORE SYSTEM CONFIGURATION

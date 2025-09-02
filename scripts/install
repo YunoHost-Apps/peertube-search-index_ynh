@@ -40,9 +40,9 @@ ynh_config_add --template="config.toml" --destination="$install_dir/meilisearch/
 #=================================================
 # INSTALL NODEJS
 #=================================================
-ynh_script_progression "Installing NodeJS..."
+#REMOVEME? ynh_script_progression "Installing NodeJS..."
 
-ynh_nodejs_install
+#REMOVEME? ynh_nodejs_install
 
 #=================================================
 # SYSTEM CONFIGURATION
