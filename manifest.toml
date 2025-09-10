@@ -26,7 +26,6 @@ architectures = "all"
 multi_instance = true
 
 ldap = "not_relevant"
-
 sso = "not_relevant"
 
 disk = "2000M"

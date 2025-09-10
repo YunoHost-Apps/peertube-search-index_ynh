@@ -8,10 +8,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# INITIALIZE AND STORE SETTINGS
-#=================================================
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
@@ -36,13 +32,6 @@ ynh_script_progression "Adding $app's configuration files..."
 
 ynh_config_add --template="default.yaml" --destination="$install_dir/sources/config/production.yaml"
 ynh_config_add --template="config.toml" --destination="$install_dir/meilisearch/config.toml"
-
-#=================================================
-# INSTALL NODEJS
-#=================================================
-#REMOVEME? ynh_script_progression "Installing NodeJS..."
-
-#REMOVEME? ynh_nodejs_install
 
 #=================================================
 # SYSTEM CONFIGURATION
