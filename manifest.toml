@@ -20,13 +20,12 @@ code = "https://framagit.org/framasoft/peertube/search-index"
 fund = "https://framasoft.org/fr/#support"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
 ldap = "not_relevant"
-
 sso = "not_relevant"
 
 disk = "2000M"
@@ -68,3 +67,6 @@ ram.runtime = "2000M"
     repo = "deb https://dl.yarnpkg.com/debian/ stable main"
     key = "https://dl.yarnpkg.com/debian/pubkey.gpg"
     packages = ["yarn"]
+
+    [resources.nodejs]
+    version = "18"
