@@ -42,10 +42,10 @@ ram.runtime = "2000M"
 
 [resources]
     [resources.sources.main]
-    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/77a1c955a765e19b6778f052b9bf3961f2f8c882/search-index-77a1c955a765e19b6778f052b9bf3961f2f8c882.tar.bz2"
-    sha256 = "32d55d6b67b82eca5eb7028f7af6e89dbb20255bff2e7b95b127c0c29ec3d00a"
-    # Unused because of submodules...
+    url = "https://framagit.org/framasoft/peertube/search-index/"
+    sha256 = "3d23a3ecc7e324dd070f023936b3c6d61b101e12"
     prefetch = false
+    format = "git"
     autoupdate.strategy = "latest_gitlab_commit"
 
     [resources.system_user]
