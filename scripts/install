@@ -21,6 +21,7 @@ _git_clone_or_pull "$install_dir/sources"
 ynh_script_progression "Installing Meilisearch..."
 
 ynh_exec_as_app mkdir -p "$install_dir/meilisearch"
+
 pushd "$install_dir/meilisearch"
     ynh_exec_as_app curl -L https://install.meilisearch.com | ynh_exec_as_app sh
 popd
@@ -68,8 +69,8 @@ popd
 ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemctl --service="$app-meilisearch" --action="start" --log_path="systemd"
-ynh_systemctl --service="$app" --action="start" --log_path="systemd" --wait_until="Server listening on port"
+ynh_systemctl --service="$app-meilisearch" --action="start"
+ynh_systemctl --service="$app" --action="start" 
 
 #=================================================
 # END OF SCRIPT

@@ -24,10 +24,12 @@ ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 
 ynh_restore "/etc/systemd/system/$app.service"
 systemctl enable "$app.service" --quiet
+
 yunohost service add "$app" --description="$app search index daemon"
 
 ynh_restore "/etc/systemd/system/$app-meilisearch.service"
 systemctl enable "$app-meilisearch.service" --quiet
+
 yunohost service add "$app-meilisearch" --description="$app Meilisearch daemon"
 
 ynh_restore "/etc/logrotate.d/$app"
@@ -37,8 +39,8 @@ ynh_restore "/etc/logrotate.d/$app"
 #=================================================
 ynh_script_progression "Reloading NGINX web server and $app's service..."
 
-ynh_systemctl --service="$app-meilisearch" --action="start" --log_path="systemd"
-ynh_systemctl --service="$app" --action="start" --log_path="systemd" --wait_until="Server listening on port"
+ynh_systemctl --service="$app-meilisearch" --action="start"
+ynh_systemctl --service="$app" --action="start"
 
 ynh_systemctl --service=nginx --action=reload
 
