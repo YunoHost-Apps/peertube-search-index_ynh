@@ -7,7 +7,7 @@ name = "PeerTube search-index"
 description.en = "Search engine for PeerTube videos and channels"
 description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
 
-version = "0.0.1.2024.11.27~ynh2"
+version = "2025.12.12~ynh1"
 
 maintainers = ["yalh76"]
 
@@ -20,13 +20,12 @@ code = "https://framagit.org/framasoft/peertube/search-index"
 fund = "https://framasoft.org/fr/#support"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 12.1.38"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
 ldap = "not_relevant"
-
 sso = "not_relevant"
 
 disk = "2000M"
@@ -68,3 +67,6 @@ ram.runtime = "2000M"
     repo = "deb https://dl.yarnpkg.com/debian/ stable main"
     key = "https://dl.yarnpkg.com/debian/pubkey.gpg"
     packages = ["yarn"]
+
+    [resources.nodejs]
+    version = "18"

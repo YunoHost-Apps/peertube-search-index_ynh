@@ -12,12 +12,16 @@ Search engine for PeerTube videos and channels
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://search.joinpeertube.org/)
 [![App Demo](https://img.shields.io/badge/App_Demo-blue?style=for-the-badge)](https://search.joinpeertube.org/)
-[![Version: 0.0.1.2024.11.27~ynh2](https://img.shields.io/badge/Version-0.0.1.2024.11.27~ynh2-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/)
+[![Version: 2025.12.12~ynh1](https://img.shields.io/badge/Version-2025.12.12~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/peertube-search-index/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/peertube-search-index"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
 <a href="https://github.com/YunoHost-Apps/peertube-search-index_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
+
+
+## Screenshots
+![Screenshot of PeerTube search-index](./doc/screenshots/sepia-search-screenshot.png)
 
 ## 📦 Developer info
 

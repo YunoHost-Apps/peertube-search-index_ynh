@@ -4,8 +4,6 @@
 # COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 
-nodejs_version=18
-
 _git_clone_or_pull() {
     repo_dir="$1"
 

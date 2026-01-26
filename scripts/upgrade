@@ -62,13 +62,6 @@ ynh_config_add --template="default.yaml" --destination="$install_dir/sources/con
 ynh_config_add --template="config.toml" --destination="$install_dir/meilisearch/config.toml"
 
 #=================================================
-# INSTALL NODEJS
-#=================================================
-ynh_script_progression "Updating NodeJS..."
-
-ynh_nodejs_install
-
-#=================================================
 # REAPPLY SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
