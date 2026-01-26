@@ -58,7 +58,7 @@ ynh_config_add_logrotate
 ynh_script_progression "Building..."
 
 pushd "$install_dir/sources"
-    ynh_hide_warnings ynh_exec_as_app yarn install --pure-lockfile
+    ynh_hide_warnings ynh_exec_as_app yarn install #--pure-lockfile
     ynh_exec_as_app mkdir -p "dist"
     ynh_hide_warnings ynh_exec_as_app npm run build
 popd
