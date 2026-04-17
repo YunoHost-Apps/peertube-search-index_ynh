@@ -64,4 +64,4 @@ ram.runtime = "2000M"
     packages = "git"
 
     [resources.nodejs]
-    version = "18"
+    version = "20"
