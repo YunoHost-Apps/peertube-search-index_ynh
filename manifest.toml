@@ -7,7 +7,7 @@ name = "PeerTube search-index"
 description.en = "Search engine for PeerTube videos and channels"
 description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
 
-version = "2026.04.28~ynh1"
+version = "2026.05.07~ynh1"
 
 maintainers = ["yalh76"]
 
@@ -42,8 +42,8 @@ ram.runtime = "2000M"
 
 [resources]
     [resources.sources.main]
-    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/fd34185e64b4901fe6dd212a7805239a7cc51700/search-index-fd34185e64b4901fe6dd212a7805239a7cc51700.tar.bz2"
-    sha256 = "4de98f911a37f6b818834f125e89c13a2c4ea8b1b11bbe241d1789143b870caa"
+    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/2ba6d4acbd71f5fea657a5ff9ea264bcc1d391e8/search-index-2ba6d4acbd71f5fea657a5ff9ea264bcc1d391e8.tar.bz2"
+    sha256 = "7af6df91e8652034b8db08beddee4a41ffb49e7d3bc7c64fe0ee5400a63cc6fe"
     # Unused because of submodules...
     prefetch = false
     autoupdate.strategy = "latest_gitlab_commit"
