@@ -47,7 +47,7 @@ _git_clone_or_pull "$install_dir/sources"
 ynh_script_progression "Installing Meilisearch..."
 
 ynh_setup_source --dest_dir="$install_dir/meilisearch" --source_id="meili"
-chmod +x "$install_dir/meilisearch"
+chmod +x "$install_dir/meilisearch/meilisearch"
 
 #=================================================
 # UPDATE A CONFIG FILE
