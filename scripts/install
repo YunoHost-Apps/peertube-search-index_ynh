@@ -20,11 +20,7 @@ _git_clone_or_pull "$install_dir/sources"
 #=================================================
 ynh_script_progression "Installing Meilisearch..."
 
-ynh_exec_as_app mkdir -p "$install_dir/meilisearch"
-pushd "$install_dir/meilisearch"
-    ynh_exec_as_app curl -L https://install.meilisearch.com | ynh_exec_as_app sh
-popd
-
+$
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================

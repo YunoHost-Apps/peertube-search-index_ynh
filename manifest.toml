@@ -48,6 +48,20 @@ ram.runtime = "2000M"
     prefetch = false
     autoupdate.strategy = "latest_gitlab_commit"
 
+    [resources.sources.meili]
+    amd64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.49.0/meilisearch-linux-amd64"
+    amd64.sha256 = "4b9733aedbfa9a6dc0c2b07e38a58369f713a3603a27f409e6cb40081a180e26"
+    arm64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.49.0/meilisearch-linux-aarch64"
+    arm64.sha256 = "84028a6cd8874ffb539e3309dbe04028781ea6e9c74b36cc136c6fdf53efa861"
+    rename = "meilisearch"
+    in_subdir = false
+    extract = false
+
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.upstream = "https://github.com/meilisearch/meilisearch"
+    autoupdate.asset.amd64 = "^meilisearch-linux-amd64$"
+    autoupdate.asset.arm64 = "^meilisearch-linux-aarch64$"
+
     [resources.system_user]
 
     [resources.install_dir]
