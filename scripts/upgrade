@@ -82,6 +82,8 @@ pushd "$install_dir/sources"
     ynh_hide_warnings ynh_exec_as_app npm run build
 popd
 
+chown -R "$app":"$app" "$install_dir"
+
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
