@@ -20,10 +20,8 @@ _git_clone_or_pull "$install_dir/sources"
 #=================================================
 ynh_script_progression "Installing Meilisearch..."
 
-ynh_exec_as_app mkdir -p "$install_dir/meilisearch"
-pushd "$install_dir/meilisearch"
-    ynh_exec_as_app curl -L https://install.meilisearch.com | ynh_exec_as_app sh
-popd
+ynh_setup_source --dest_dir="$install_dir/meilisearch" --source_id="meili"
+chmod +x "$install_dir/meilisearch/meilisearch"
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -60,6 +58,8 @@ pushd "$install_dir/sources"
     ynh_hide_warnings ynh_exec_as_app npm ci
     ynh_hide_warnings ynh_exec_as_app npm run build
 popd
+
+chown -R "$app":"$app" "$install_dir"
 
 #=================================================
 # START SYSTEMD SERVICE
