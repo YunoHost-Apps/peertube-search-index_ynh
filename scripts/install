@@ -20,7 +20,6 @@ _git_clone_or_pull "$install_dir/sources"
 #=================================================
 ynh_script_progression "Installing Meilisearch..."
 
-$
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
