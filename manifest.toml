@@ -7,7 +7,7 @@ name = "PeerTube search-index"
 description.en = "Search engine for PeerTube videos and channels"
 description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
 
-version = "2026.07.03~ynh7"
+version = "2026.09.15~ynh3"
 
 maintainers = ["yalh76"]
 
@@ -42,17 +42,17 @@ ram.runtime = "2000M"
 
 [resources]
     [resources.sources.main]
-    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/b7da83e947ad3ee35974640ed16d8e086a1eb21f/search-index-b7da83e947ad3ee35974640ed16d8e086a1eb21f.tar.bz2"
-    sha256 = "097bc3fa6b61ff49d2800cf6f373529fcefbd420909e95364a574f015a6b1818"
+    url = "https://framagit.org/framasoft/peertube/search-index/-/archive/f81ad23f19017fa672de7c7bede4d9782c7028c1/search-index-f81ad23f19017fa672de7c7bede4d9782c7028c1.tar.bz2"
+    sha256 = "ce8f4af1f269e452a4ff4266a56d546fa432659824f58a7afc77d9cad25a1511"
     # Unused because of submodules...
     prefetch = false
     autoupdate.strategy = "latest_gitlab_commit"
 
     [resources.sources.meili]
-    amd64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.53.2/meilisearch-linux-amd64"
-    amd64.sha256 = "6c00019a887813ccbce54eec52718c9343bf4234383871146c67c76b1d2646cd"
-    arm64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.53.2/meilisearch-linux-aarch64"
-    arm64.sha256 = "12a38c387953e61807a5a0deb64e4bf52def38e49872c7963949a7d4d41a2117"
+    amd64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.55.0/meilisearch-linux-amd64"
+    amd64.sha256 = "7e33f5889235f14290074a19a6d3574bd9b10fb2ee8731eabb7dafd0714b0513"
+    arm64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.55.0/meilisearch-linux-aarch64"
+    arm64.sha256 = "f268dde681f20f6fc393d053dab11909d059574e52916355ad1d10212ec8a2a7"
     rename = "meilisearch"
     in_subdir = false
     extract = false
