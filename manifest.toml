@@ -7,7 +7,7 @@ name = "PeerTube search-index"
 description.en = "Search engine for PeerTube videos and channels"
 description.fr = "Moteur de recherche de vidéos et chaînes PeerTube"
 
-version = "2026.11.19~ynh1"
+version = "2026.11.19~ynh2"
 
 maintainers = ["yalh76"]
 
@@ -49,10 +49,10 @@ ram.runtime = "2000M"
     autoupdate.strategy = "latest_gitlab_commit"
 
     [resources.sources.meili]
-    amd64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.57.0/meilisearch-linux-amd64"
-    amd64.sha256 = "cc5c8825d6effd5295c534fd2fb92f14410eb9a14a88a012805cb239f2dc7969"
-    arm64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.57.0/meilisearch-linux-aarch64"
-    arm64.sha256 = "0e670a95eda37bf53afb04d495d8647a1a68708b1688f31ac89cbf5851152779"
+    amd64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.58.0/meilisearch-linux-amd64"
+    amd64.sha256 = "5e217e1694450455dc557c3719a00472e567957e4fbc3bd82de2762ded2155b7"
+    arm64.url = "https://github.com/meilisearch/meilisearch/releases/download/v1.58.0/meilisearch-linux-aarch64"
+    arm64.sha256 = "24851acfd3d97e46448eba05079c2aaefb1771e4baaae2f0281a7b38b7b6392f"
     rename = "meilisearch"
     in_subdir = false
     extract = false
