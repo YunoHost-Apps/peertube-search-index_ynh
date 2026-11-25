@@ -10,7 +10,7 @@ Environment=NODE_ENV=production
 Environment="PATH=__PATH_WITH_NODEJS__"
 Environment=NODE_CONFIG_DIR=__INSTALL_DIR__/sources/config
 WorkingDirectory=__INSTALL_DIR__/sources/
-ExecStart=__NODEJS_DIR__/npm start
+ExecStart=ExecStart=__NODEJS_DIR__/node dist/server.js
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=__APP__

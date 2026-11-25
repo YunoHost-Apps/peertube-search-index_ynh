@@ -8,6 +8,13 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
@@ -55,8 +62,8 @@ ynh_config_add_logrotate
 ynh_script_progression "Building..."
 
 pushd "$install_dir/sources"
-    ynh_hide_warnings ynh_exec_as_app npm ci
-    ynh_hide_warnings ynh_exec_as_app npm run build
+    ynh_hide_warnings ynh_exec_as_app pnpm install --frozen-lockfile
+    ynh_hide_warnings ynh_exec_as_app pnpm build
 popd
 
 chown -R "$app":"$app" "$install_dir"
